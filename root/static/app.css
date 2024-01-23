@@ -1,0 +1,233 @@
+/* Basic Reset */
+body, h1, h2, form, input, select, label {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #eef5ff;
+    color: #333;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    background: #f7faff;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 42px;
+    letter-spacing: 2px;
+    font-family: 'Advent'; !important
+}
+
+h2 {
+    padding-left : 15px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-family: 'Advent'; !important
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="range"],
+select {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 18px;
+    background-color: rgb(230, 241, 255);
+    color: #333;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="range"]:focus,
+select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 16px 24px;
+    border: none;
+    border-radius: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="text"]::placeholder,
+input[type="range"]::placeholder,
+select::placeholder {
+    color: #aaa;
+    font-family: 'FontAwesome';
+    content: "\f007"; /* Example: Using the search icon */
+}
+
+/* Styling for radio buttons */
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left : 10%;
+    padding-right : 10%;
+}
+
+input[type="radio"] {
+    margin-right: 12px;
+
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #444;
+    border-radius: 50%;
+    outline: none;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+input[type="radio"]:checked {
+    background-color: rgb(64, 155, 189);
+}
+
+input[type="radio"]:hover {
+
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        gap: 20px;
+    }
+
+    input[type="text"],
+    input[type="range"],
+    select {
+        padding: 14px;
+        font-size: 16px;
+    }
+
+    .radio-group {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    input[type="text"],
+    input[type="range"],
+    select {
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.container {
+    animation: fadeIn 2s forwards;
+}
+
+.fadeInScroll {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.fadeInScroll.show {
+    opacity: 1;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+h1 {
+    animation: slideInLeft 1.5s forwards;
+}
+
+/* Beautify the Dropdown */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: rgb(230, 241, 255); /* Light blue background color */
+    border-radius: 15px; /* Rounded corners */
+    padding: 16px 30px 16px 16px; /* Padding for better spacing */
+    cursor: pointer;
+    border: 2px solid black; /* Border for the dropdown */
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Style for Dropdown Options */
+select option {
+    padding: 10px 15px;
+    background-color: #f7f7f7; /* Light background color for options */
+    transition: background-color 0.3s ease;
+    border-radius: 10px; /* Rounded corners for options */
+}
+
+/* Hover Effect on Dropdown Options */
+select option:hover {
+    background-color: #e0e0e0; /* Slightly darker background color on hover */
+}
+
+/* Focus Effect on Dropdown */
+select:focus {
+    border-color: #4CAF50; /* Change border color when focused */
+    outline: none; /* Remove default focus outline */
+}
+
+
+
+
+
+
+

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="/static/app.css">
+    <title>Heart Disease Predictor</title>
+</head>
+<body>
+<div class="container">
+<h1 class="fadeInScroll">Heart Disease Prediction</h1>
+
+<form action="/predict" method="POST" class="form-container">
+
+<!--------------------------------------------------------------------------->
+<label for="age"><h2 class="">Age</h2></label>
+<input required type="text" pattern="^[1-9][0-9]*$" min="18" max="150" name="age" id="age" placeholder="Enter age">
+
+<!--------------------------------------------------------------------------->
+<label><h2>Select Gender</h2></label>
+<div id="sex" class="radio-group">
+    <label>
+        <input required type="radio" name="sex" value="1"> Male
+    </label>
+    <label>
+        <input required type="radio" name="sex" value="0"> Female
+    </label>
+</div>
+
+<!------------------------------------------------------------------------->
+    <label for="cp"><h2>Chest Pain Type</h2></label>
+<select required name="cp" id="cp">
+    <option value="1">Typical Angina</option>
+    <option value="2">Atypical Angina</option>
+    <option value="3">Non-anginal Pain</option>
+    <option value="4">Asymptomatic</option>
+</select>
+<!-------------------------------------------------------------------------->
+<label for="trestbps"><h2>Blood Pressure (while patient at rest) : <span id="trestbpsValue">90</span></h2></label>
+<input required type="range" min="90" max="200" step="1" name="trestbps" id="trestbpsSlider" value="90">
+
+<!--------------------------------------------------------------------------->
+    <label for="chol"><h2>Cholestoral : <span id="cholValue">100</span></h2></label>
+<input required type="range" min="100" max="600" step="1" name="chol" id="cholSlider" value="100">
+
+<!-------------------------------------------------------------------------->
+    <label for="fbs"><h2>Fasting Blood Sugar</h2></label>
+<select required name="fbs" id="fbs">
+    <option value="1"> Greater than 120 mg/dl </option>
+    <option value="0">Equal or Lesser than 120 mg/dl </option>
+</select>
+<!--------------------------------------------------------------------------->
+    <label><h2>Resting ECG</h2></label>
+<div id="restecg" class="radio-group">
+    <label>
+        <input required type="radio" name="restecg" value="0"> Normal
+    </label>
+    <label>
+        <input required type="radio" name="restecg" value="1"> Having ST-T Wave Abnormality (T Wave)
+    </label>
+</div>
+<!-------------------------------------------------------------------------->
+    <label for="thalach">
+    <h2>Maximum Heart Rate (Thalium Stress Test) : <span id="thalachValue">70</span></h2>
+</label>
+<input required type="range" min="70" max="210" step="1" name="thalach" id="thalachSlider" value="70">
+
+<!------------------------------------------------------------------------------>
+    <label><h2>Exercise Induced Angina</h2></label>
+<div id="exang" class="radio-group">
+    <label>
+        <input required type="radio" name="exang" value="1"> Yes
+    </label>
+    <label>
+        <input required type="radio" name="exang" value="0"> No
+    </label>
+</div>
+<!--------------------------------------------------------------------------->
+<label for="oldpeak">
+    <h2>ST Depression : <span id="currentValue">0</span></h2>
+</label>
+<input required type="range" min="0" max="6.2" step="0.1" name="oldpeak" id="oldpeakSlider">
+
+<!--------------------------------------------------------------------------->
+    <label><h2>Slope (Peak exercise ST segment)</h2></label>
+<div id="slope" class="radio-group">
+    <label>
+        <input required type="radio" name="slope" value="1"> Up-Sloping
+    </label>
+    <label>
+        <input required type="radio" name="slope" value="2"> Flat
+    </label>
+    <label>
+        <input required type="radio" name="slope" value="3"> Down-Sloping
+    </label>
+</div>
+<!------------------------------------------------------------------------------->
+        <!--                ENDS                   -->
+       <input type="submit" class="submit-button" value="Predict"></input>
+</form>
+
+
+<!--        <h1 id="answer" ><b>{{pred_text}}</b></h1>-->
+</div>
+</body>
+</html>
+
+<script>
+    const slider = document.getElementById('oldpeakSlider');
+    const currentValueElement = document.getElementById('currentValue');
+    slider.addEventListener('input', function() {
+        currentValueElement.textContent = slider.value;
+    });
+
+      const thalachSlider = document.getElementById('thalachSlider');
+    const thalachValueElement = document.getElementById('thalachValue');
+    thalachSlider.addEventListener('input', function() {
+        thalachValueElement.textContent = thalachSlider.value;
+    });
+
+     const cholSlider = document.getElementById('cholSlider');
+    const cholValueElement = document.getElementById('cholValue');
+
+    cholSlider.addEventListener('input', function() {
+        cholValueElement.textContent = cholSlider.value;
+    });
+
+        const trestbpsSlider = document.getElementById('trestbpsSlider');
+    const trestbpsValueElement = document.getElementById('trestbpsValue');
+
+    trestbpsSlider.addEventListener('input', function() {
+        trestbpsValueElement.textContent = trestbpsSlider.value;
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    let elements = document.querySelectorAll('.fadeInScroll');
+
+    function checkVisibility() {
+        for (let element of elements) {
+            let rect = element.getBoundingClientRect();
+            let viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight);
+
+            if (rect.top <= viewHeight * 0.75 && rect.bottom >= 0) {
+                element.classList.add('show');
+            } else {
+                element.classList.remove('show');
+            }
+        }
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('resize', checkVisibility);
+
+    checkVisibility();
+});
+
+
+
+
+
+</script>
